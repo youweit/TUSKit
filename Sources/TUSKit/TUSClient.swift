@@ -76,7 +76,6 @@ public final class TUSClient {
     private var uploads = [UUID: UploadMetadata]()
     
 #if os(iOS)
-    @available(iOS 13.0, *)
     private lazy var backgroundClient: TUSBackground = {
         return TUSBackground(api: api, files: files, chunkSize: chunkSize)
     }()
@@ -287,7 +286,6 @@ public final class TUSClient {
     /// This will signal the OS to upload files when appropriate (e.g. when a phone is on a charger and on Wifi).
     /// Note that the OS decides when uploading begins.
 #if os(iOS)
-    @available(iOS 13.0, *)
     public func scheduleBackgroundTasks() {
         backgroundClient.scheduleBackgroundTasks()
     }
